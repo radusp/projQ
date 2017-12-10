@@ -13,19 +13,27 @@ namespace QR_Project_BL
 {
     public class ImageAnalyzer
     {
+        private List<Result> foundQrCodesList = new List<Result>();
         public ImageAnalyzer()
         {
         }
 
         public void analyzeAllImages(Bitmap frame)
         {             
-            LuminanceSource source;
-            source = new BitmapLuminanceSource(frame);
+            LuminanceSource source = new BitmapLuminanceSource(frame);
             BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-            Result res = new MultiFormatReader().decode(bitmap);
-            if (res != null)
+            Result decodeingResult = new MultiFormatReader().decode(bitmap);
+            if (decodeingResult != null)
             {
-                Console.WriteLine(res.Text);
+                foundQrCodesList.Add(decodeingResult);
+            }
+        }
+
+        public void doWhenAllQueueWasProcessed()
+        {
+            if (foundQrCodesList.Count > 0)
+            {
+                string doTheOtherStuff = "asda";
             }
         }
     }

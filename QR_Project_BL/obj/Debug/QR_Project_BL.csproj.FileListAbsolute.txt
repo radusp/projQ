@@ -27,3 +27,4 @@ c:\users\socac\onedrive\documents\visual studio 2015\Projects\QR_CODE_PROJECT\QR
 c:\users\socac\onedrive\documents\visual studio 2015\Projects\QR_CODE_PROJECT\QR_Project_BL\bin\Debug\zxing.xml
 c:\users\socac\onedrive\documents\visual studio 2015\Projects\QR_CODE_PROJECT\QR_Project_BL\bin\Debug\zxing.presentation.pdb
 c:\users\socac\onedrive\documents\visual studio 2015\Projects\QR_CODE_PROJECT\QR_Project_BL\bin\Debug\zxing.presentation.xml
+c:\users\socac\onedrive\documents\visual studio 2015\Projects\QR_CODE_PROJECT\QR_Project_BL\obj\Debug\QR_Project_BL.csprojResolveAssemblyReference.cache
