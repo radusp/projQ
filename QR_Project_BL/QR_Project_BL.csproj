@@ -99,6 +99,8 @@
     <Compile Include="ImageQueue.cs" />
     <Compile Include="ImageQueueHandler.cs" />
     <Compile Include="Interfaces\IVideManager.cs" />
+    <Compile Include="ReportCreator.cs" />
+    <Compile Include="VideoInfo.cs" />
     <Compile Include="VideoManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

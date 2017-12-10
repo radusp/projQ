@@ -13,11 +13,13 @@ namespace QR_Project_BL
 {
     public class VideoManager : Interfaces.IVideoManager
     {
-        private VideoFileReader videoReader = new VideoFileReader();      
+        private VideoFileReader videoReader = new VideoFileReader();
+        VideoInfo infoForReport = new VideoInfo();
         private bool isTheVideoLoaded = false;
         private IimageQueue workQueue;
-        private  int maxQueueSize = 1000;
-        private  int threadSleepTimeInMsIfQueueIsFull = 1000;
+        private int maxQueueSize = 500;
+        private int threadSleepTimeInMsIfQueueIsFull = 500;
+        public bool isProcessingDone = false;
 
         public VideoManager(IimageQueue myQueue)
         {
@@ -26,7 +28,7 @@ namespace QR_Project_BL
 
         public bool isVideoLoaded()
         {
-            return isTheVideoLoaded; 
+            return isTheVideoLoaded;
         }
 
         public void setForTestIsVideoLOaded(bool value) { isTheVideoLoaded = value; }
@@ -41,7 +43,7 @@ namespace QR_Project_BL
             for (int i = 0; i < videoReader.FrameCount; i++)
             {
                 try
-                {                    
+                {
                     if (workQueue.getQueueCount() < maxQueueSize)
                     {
                         workQueue.AddFrame(videoReader.ReadVideoFrame(i));
@@ -51,13 +53,33 @@ namespace QR_Project_BL
                         Thread.Sleep(threadSleepTimeInMsIfQueueIsFull);
                         i = i - 1;
                     }
-                    
+
                 }
                 catch (ArgumentException ex)
                 {
-                    string debugString = ex.ToString() ;
+                    string debugString = ex.ToString();
                 }
             }
+            isProcessingDone = true;        
+        }
+        public VideoInfo getVideoInfo()
+        {
+            if (videoReader.FrameCount > 0)
+            {
+                populateVideoInfoSClass();
+                return infoForReport;
+            }
+            else return null;
+        }
+
+        private void populateVideoInfoSClass()
+        {
+            infoForReport.codecName = videoReader.CodecName;
+            infoForReport.frameCount = videoReader.FrameCount;
+            infoForReport.frameRate = videoReader.FrameCount;
+            infoForReport.height = videoReader.Height;
+            infoForReport.width = videoReader.Width;
+            infoForReport.fpsValue = videoReader.FrameRate.Value;
         }
 
         private void extractFramePreValidation()

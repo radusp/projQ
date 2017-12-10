@@ -13,7 +13,8 @@ namespace QR_Project_BL
 {
     public class ImageAnalyzer
     {
-        private List<Result> foundQrCodesList = new List<Result>();
+        private Dictionary<Result, int> foundQrCodesList = new Dictionary<Result,int>();
+        private int frameIndex = 0;
         public ImageAnalyzer()
         {
         }
@@ -25,16 +26,30 @@ namespace QR_Project_BL
             Result decodeingResult = new MultiFormatReader().decode(bitmap);
             if (decodeingResult != null)
             {
-                foundQrCodesList.Add(decodeingResult);
+                foundQrCodesList.Add(decodeingResult, frameIndex);
             }
+            frameIndex++;
         }
 
         public void doWhenAllQueueWasProcessed()
         {
             if (foundQrCodesList.Count > 0)
             {
-                string doTheOtherStuff = "asda";
+                string debugPoint = "debug";
             }
+        }
+
+        public Dictionary<Result, int> getAnalysisResults()
+        {
+            if (foundQrCodesList.Count > 0)
+            {
+                return foundQrCodesList;
+            }
+            else
+            {
+                return null;
+            }
+            
         }
     }
 }
