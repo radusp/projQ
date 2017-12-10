@@ -11,6 +11,5 @@ namespace QR_Project_BL.Interfaces
     {
         void loadVideo(string path);
         void extractFramesFromVideo();
-        List<Bitmap> getFramesExtracted();
     }
 }

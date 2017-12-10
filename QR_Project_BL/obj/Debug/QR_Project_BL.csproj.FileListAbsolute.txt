@@ -21,7 +21,6 @@ c:\users\socac\onedrive\documents\visual studio 2015\Projects\QR_CODE_PROJECT\QR
 c:\users\socac\onedrive\documents\visual studio 2015\Projects\QR_CODE_PROJECT\QR_Project_BL\bin\Debug\Accord.xml
 c:\users\socac\onedrive\documents\visual studio 2015\Projects\QR_CODE_PROJECT\QR_Project_BL\bin\Debug\Accord.Video.xml
 c:\users\socac\onedrive\documents\visual studio 2015\Projects\QR_CODE_PROJECT\QR_Project_BL\bin\Debug\Accord.Video.FFMPEG.xml
-c:\users\socac\onedrive\documents\visual studio 2015\Projects\QR_CODE_PROJECT\QR_Project_BL\obj\Debug\QR_Project_BL.csprojResolveAssemblyReference.cache
 c:\users\socac\onedrive\documents\visual studio 2015\Projects\QR_CODE_PROJECT\QR_Project_BL\bin\Debug\zxing.dll
 c:\users\socac\onedrive\documents\visual studio 2015\Projects\QR_CODE_PROJECT\QR_Project_BL\bin\Debug\zxing.presentation.dll
 c:\users\socac\onedrive\documents\visual studio 2015\Projects\QR_CODE_PROJECT\QR_Project_BL\bin\Debug\zxing.pdb

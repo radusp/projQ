@@ -94,7 +94,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IimageQueue.cs" />
     <Compile Include="ImageAnalyzer.cs" />
+    <Compile Include="ImageQueue.cs" />
+    <Compile Include="ImageQueueHandler.cs" />
     <Compile Include="Interfaces\IVideManager.cs" />
     <Compile Include="VideoManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

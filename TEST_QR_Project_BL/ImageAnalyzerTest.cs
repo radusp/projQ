@@ -62,12 +62,14 @@ namespace TEST_QR_Project_BL
         [TestMethod]
         public void TestMethod1()
         {
-            VideoManager newVideo = new VideoManager();
-            newVideo.loadVideo(@"D:\scan1.mp4");
-            newVideo.extractFramesFromVideo();
+            //  VideoManager newVideo = new VideoManager(new ImageQueue(null));
+            //   newVideo.loadVideo(@"D:\scan1.mp4");
+            //newVideo.extractFramesFromVideo();
+            ImageQueueHandler myHandler = new ImageQueueHandler(@"D:\scan.mp4");
+            myHandler.startAnalysisOnThreads();
 
-            ImageAnalyzer analyzeImages = new ImageAnalyzer(newVideo);
-            analyzeImages.analyzeAllImages();
+          //  ImageAnalyzer analyzeImages = new ImageAnalyzer();
+         //   analyzeImages.analyzeAllImages();
          //   aa.getOneImage();
         }
     }

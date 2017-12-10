@@ -13,35 +13,20 @@ namespace QR_Project_BL
 {
     public class ImageAnalyzer
     {
-        IVideoManager receivedVideo;
-        public ImageAnalyzer(IVideoManager videoObject)
+        public ImageAnalyzer()
         {
-            receivedVideo = videoObject;
         }
 
-        public void analyzeAllImages()
-        {
-            List<string> resultedText = new List<string>();  
-            foreach (Bitmap bmp in receivedVideo.getFramesExtracted())
+        public void analyzeAllImages(Bitmap frame)
+        {             
+            LuminanceSource source;
+            source = new BitmapLuminanceSource(frame);
+            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+            Result res = new MultiFormatReader().decode(bitmap);
+            if (res != null)
             {
-                LuminanceSource source;
-                source = new BitmapLuminanceSource(bmp);
-                BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
-                Result res = new MultiFormatReader().decode(bitmap);
-                if (res != null)
-                {
-                    resultedText.Add(res.Text);
-                }
+                Console.WriteLine(res.Text);
             }
-        }
-
-        public void getOneImage()
-        {
-            Image testImg = Image.FromFile(@"D:\qr.png");
-            Bitmap input = new Bitmap(testImg); 
-
-
-
         }
     }
 }

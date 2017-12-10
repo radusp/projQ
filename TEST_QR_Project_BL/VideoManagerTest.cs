@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using QR_Project_BL;
+using TEST_QR_Project_BL.Fakes;
 
 namespace TEST_QR_Project_BL
 {
@@ -12,7 +13,8 @@ namespace TEST_QR_Project_BL
         public void emptyPathToVideoReceivedThrowError()
         {
             //Arrange
-            VideoManager myManager = new VideoManager();
+            FakeImageQueue fakeQueue = new FakeImageQueue();
+            VideoManager myManager = new VideoManager(fakeQueue);
             //Act
             myManager.loadVideo("");
             //Assert
@@ -23,7 +25,8 @@ namespace TEST_QR_Project_BL
         public void pathThatDoesNotExistWillThrowCustomException()
         {
             //Arrange
-            VideoManager myManager = new VideoManager();
+            FakeImageQueue fakeQueue = new FakeImageQueue();
+            VideoManager myManager = new VideoManager(new ImageQueue(null));
             //Act
             myManager.loadVideo(@"O:\zzz.avi");
             //Assert
@@ -34,7 +37,8 @@ namespace TEST_QR_Project_BL
         public void nullPathToVideoFIleWillThrowCustomException()
         {
             //Arrange
-            VideoManager myManager = new VideoManager();
+            FakeImageQueue fakeQueue = new FakeImageQueue();
+            VideoManager myManager = new VideoManager(new ImageQueue(null));
             //Act
             myManager.loadVideo(null);
             //Assert
@@ -43,7 +47,8 @@ namespace TEST_QR_Project_BL
         public void IfAbleToLoadVideoSetSuccessFlagToTrue()
         {
             //Arrange
-            VideoManager myManager = new VideoManager();
+            FakeImageQueue fakeQueue = new FakeImageQueue();
+            VideoManager myManager = new VideoManager(fakeQueue);
             //Act
             myManager.loadVideo(@"C:\test.mp4");
             //Assert
@@ -55,7 +60,8 @@ namespace TEST_QR_Project_BL
         public void TryingToExtractWhenNoVideoIsLoadedWillThrowError()
         {
             //Arrange
-            VideoManager myManager = new VideoManager();
+            FakeImageQueue fakeQueue = new FakeImageQueue();
+            VideoManager myManager = new VideoManager(fakeQueue);
             //Act
             myManager.loadVideo(@"C:\test.mp4");
             myManager.setForTestIsVideoLOaded(false);
@@ -68,23 +74,11 @@ namespace TEST_QR_Project_BL
         public void IfFrameCountOfLoadedVideoIsZeroThrowCustomException()
         {
             //Arrange
-            VideoManager myManager = new VideoManager();
+            FakeImageQueue fakeQueue = new FakeImageQueue();
+            VideoManager myManager = new VideoManager(fakeQueue);
             //Act
             myManager.loadVideo(@"C:\sample.wmv");
             myManager.extractFramesFromVideo();
-            //Assert
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(NoFramesExtractedInListFromVideo))]
-        public void IfNoFramesAreINListThrowCustomException()
-        {
-            //Arrange
-            VideoManager myManager = new VideoManager();
-            //Act
-            myManager.loadVideo(@"C:\test.mp4");
-            myManager.extractFramesFromVideo();
-            myManager.setForTestisListOfFramesPopulated(false);
             //Assert
         }
     }
