@@ -65,7 +65,7 @@ namespace TEST_QR_Project_BL
             //  VideoManager newVideo = new VideoManager(new ImageQueue(null));
             //   newVideo.loadVideo(@"D:\scan1.mp4");
             //newVideo.extractFramesFromVideo();
-            ImageQueueHandler myHandler = new ImageQueueHandler(@"D:\scan3.mp4");
+            ImageQueueHandler myHandler = new ImageQueueHandler(@"D:\scan3.mp4",null);
             myHandler.startAnalysisOnThreads();
 
           //  ImageAnalyzer analyzeImages = new ImageAnalyzer();
